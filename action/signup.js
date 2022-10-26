@@ -40,7 +40,7 @@ const userVerifyOtp = asyncWrapper( async(req, res, next)=>{
 			console.log(`Valid OTP: ${email} verified`);
 			await User.create({name, email});
 			res.send(`Successfully registered ${email}`);
-			await OTP.remove({email});
+			await OTP.deleteOne({email});
 		}
 		else{
 			res.send("Invalid OTP");
