@@ -4,7 +4,8 @@ const SENDER_MAIL = process.env.SENDERMAIL;
 const nodemailer = require('nodemailer');
 
 const get_OTP = () =>{
-	let otp = Math.ceil(((Math.random()*10000)+1000)%9999);
+	let a = Math.ceil(Math.random()*10000);
+    	let otp = a<1000?(a+1000):a;
 	return otp;
 }
 
