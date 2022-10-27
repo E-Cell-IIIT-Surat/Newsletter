@@ -1,5 +1,6 @@
 require('dotenv').config();
 const SENDER_PASS = process.env.SENDERPASS;
+const SENDER_MAIL = process.env.SENDERMAIL;
 const nodemailer = require('nodemailer');
 
 const get_OTP = () =>{
@@ -11,12 +12,12 @@ const send_mail = async (usr_email, otp) => {
   const transporter= nodemailer.createTransport({
       service : "Gmail",
       auth :{
-          user:"harsharmassignment@gmail.com",
+          user:SENDER_MAIL,
           pass:SENDER_PASS
       }
   })
   const options={
-      from :"harsharmassignment@gmail.com",
+      from :SENDER_MAIL,
       to:`${usr_email}`,
       subject:"OTP FOR VERIFICATION",
       text: `${otp}`,
