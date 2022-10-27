@@ -10,7 +10,7 @@ const DBURI = process.env.DBURI;
 const ServerTesting = require('./middleware/serverUser');
 
 //ROUTES IMPORTING
-const healthcheckroute = require('./routes/healthCheck');
+const router = require('./routes/router.js');
 const serverIsRunning = require("./middleware/serverUser");
 
 //USING MIDDLEWARES
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(serverIsRunning);
 
 //USING ROUTES
-app.use('/',healthcheckroute);
+app.use('/',router);
 
 mongoose.connect(DBURI,()=>{
     console.log('Connected to DB');
